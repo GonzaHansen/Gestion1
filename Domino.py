@@ -83,41 +83,64 @@ def Turn(Board, PlayerData, Current, PossiblePlays):
     if TileToPlay[1] == CurrentBoard[0]:
         Board.insert(0,TileToPlay)
         PlayerHand.remove(TileToPlay)
+        print("Board After play:")
         print(Board)
+        input("Press any key to continue")
         return Board
         
     elif TileToPlay[0] == CurrentBoard[1]:
         Board.append(TileToPlay)
         PlayerHand.remove(TileToPlay)
+        print("Board After play:")
         print(Board)
+        input("Press any key to continue")
         return Board
     
     elif TileToPlay[0] == CurrentBoard[0]:
         PlayerHand.remove(TileToPlay)
         TileToPlay = TileToPlay[::-1]
         Board.insert(0,TileToPlay)
+        print("Board After play:")
         print(Board)
+        input("Press any key to continue")
         return Board
     
     elif TileToPlay[1] == CurrentBoard[1]:
         PlayerHand.remove(TileToPlay)
         TileToPlay = TileToPlay[::-1]
         Board.append(TileToPlay)
+        print("Board After play:")
         print(Board)
+        input("Press any key to continue")
         return Board
 
 
 
 Board = []
 Places = []
-totPlayer = 5
+rounds = 1
+
+while(True):
+    print("How many players? (2-14): ")
+    totPlayer = int(input())
+    if totPlayer > 14 or totPlayer < 2:
+        print("Please enter a valid number")
+    else:
+        print(f"Number of players is: {totPlayer}")
+        break
+
 PlayerData = DominoDealer(totPlayer)
 Order = PlayerOrder(PlayerData)
+
 aux = True
 aux2 = True
 aux3 = False
+print("Welcome to Domino!")
 while(True):
 
+    print("-----------------------------------------------------------")
+
+    print(f"Current round is {rounds}")
     CheckNoMorePlays = 0
 
     if aux2:
@@ -130,36 +153,47 @@ while(True):
             print("No more possible plays")
             aux3 = True
             break
-
+        
+        #This makes sure the first player doesnt play twice the first round
         if aux:
             aux = False
             continue
+
         Current = player[0]
-        print("Checking player data")
-        for i in PlayerData:
-            print(i)
-        print("End check")
 
         if len(PlayerData[Current]) == 0:
             Places.append(Current)
-            PlayerData.pop(Current)
+            Order.remove(player)
             continue
+            
+        print(f"Current player {Current + 1}")
+        print(f"Player {Current + 1} available tiles ares {PlayerData[Current]}")
+        print("Current Board:")
+        print(Board)
+        input("Press any key to continue")
 
         PossiblePlays = CheckHand(PlayerData, Current, BoardChecker(Board))
         if len(PossiblePlays) == 0:
-            print(f"Player {player[0] + 1} doesnt have a possible domino to play")
+            print(f"Player {Current + 1} doesnt have a possible domino to play")
+            input("Press any key to continue")
             CheckNoMorePlays += 1
-            if CheckNoMorePlays == totPlayer:
-                print("No more players hace possible plays")
+            if CheckNoMorePlays == len(Order):
+                print("No more players have possible plays")
+                input("Press any key to continue")
                 break
         else:
             Turn(Board, PlayerData, Current, PossiblePlays)
+
+        print("-----------------------------------------------------------")
     
-    if aux3 or CheckNoMorePlays == totPlayer:
+    if aux3 or CheckNoMorePlays == len(Order):
+        print("The final board is:")
         print(Board)
         print("Game endend")
+        print(f"Winner is: Player {Places[0] + 1}!")
         break
     
+    rounds += 1
 
 
 
