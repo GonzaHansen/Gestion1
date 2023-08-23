@@ -86,10 +86,7 @@ def Turn(Board, PlayerData, Current, PossiblePlays):
         print("Board After play:")
         print(Board)
         input("Press any key to continue")
-<<<<<<< HEAD
         print("-----------------------------------------------------------")
-=======
->>>>>>> 4332e553252f13c9a149bc27702003bcec37c3a0
         return Board
         
     elif TileToPlay[0] == CurrentBoard[1]:
@@ -98,10 +95,7 @@ def Turn(Board, PlayerData, Current, PossiblePlays):
         print("Board After play:")
         print(Board)
         input("Press any key to continue")
-<<<<<<< HEAD
         print("-----------------------------------------------------------")
-=======
->>>>>>> 4332e553252f13c9a149bc27702003bcec37c3a0
         return Board
     
     elif TileToPlay[0] == CurrentBoard[0]:
@@ -111,10 +105,7 @@ def Turn(Board, PlayerData, Current, PossiblePlays):
         print("Board After play:")
         print(Board)
         input("Press any key to continue")
-<<<<<<< HEAD
         print("-----------------------------------------------------------")
-=======
->>>>>>> 4332e553252f13c9a149bc27702003bcec37c3a0
         return Board
     
     elif TileToPlay[1] == CurrentBoard[1]:
@@ -124,10 +115,7 @@ def Turn(Board, PlayerData, Current, PossiblePlays):
         print("Board After play:")
         print(Board)
         input("Press any key to continue")
-<<<<<<< HEAD
         print("-----------------------------------------------------------")
-=======
->>>>>>> 4332e553252f13c9a149bc27702003bcec37c3a0
         return Board
 
 
@@ -148,17 +136,6 @@ while(True):
 PlayerData = DominoDealer(totPlayer)
 Order = PlayerOrder(PlayerData)
 
-<<<<<<< HEAD
-for i in Order:
-    print(f"El juador actual es {i[0]}")
-    print("La mano del jugador es:")
-    print(PlayerData[i[0]])
-
-
-
-
-=======
->>>>>>> 4332e553252f13c9a149bc27702003bcec37c3a0
 aux = True
 aux2 = True
 aux3 = False
@@ -194,50 +171,30 @@ while(True):
         if aux:
             aux = False
             continue
-<<<<<<< HEAD
 
         Current = player[0]
-=======
-
-        Current = player[0]
-
-        if len(PlayerData[Current]) == 0:
-            Places.append(Current)
-            Order.remove(player)
-            continue
->>>>>>> 4332e553252f13c9a149bc27702003bcec37c3a0
             
         print(f"Current player {Current + 1}")
         print(f"Player {Current + 1} available tiles ares {PlayerData[Current]}")
         print("Current Board:")
         print(Board)
         input("Press any key to continue")
-<<<<<<< HEAD
         print("-----------------------------------------------------------")
-=======
->>>>>>> 4332e553252f13c9a149bc27702003bcec37c3a0
 
         PossiblePlays = CheckHand(PlayerData, Current, BoardChecker(Board))
         if len(PossiblePlays) == 0:
             print(f"Player {Current + 1} doesnt have a possible domino to play")
             input("Press any key to continue")
-<<<<<<< HEAD
             print("-----------------------------------------------------------")
-=======
->>>>>>> 4332e553252f13c9a149bc27702003bcec37c3a0
             CheckNoMorePlays += 1
             if CheckNoMorePlays == len(Order):
                 print("No more players have possible plays")
                 input("Press any key to continue")
-<<<<<<< HEAD
                 print("-----------------------------------------------------------")
-=======
->>>>>>> 4332e553252f13c9a149bc27702003bcec37c3a0
                 break
         else:
             Turn(Board, PlayerData, Current, PossiblePlays)
 
-<<<<<<< HEAD
         if len(PlayerData[Current]) == 0:
             print(f"Player {Current + 1} run out of tiles he is the winner!!!")
             Places.append(Current)
@@ -245,20 +202,14 @@ while(True):
             aux3=True
             break
 
-=======
->>>>>>> 4332e553252f13c9a149bc27702003bcec37c3a0
         print("-----------------------------------------------------------")
     
     if aux3 or CheckNoMorePlays == len(Order):
         print("The final board is:")
         print(Board)
         print("Game endend")
-<<<<<<< HEAD
         input("Press any key to continue")
         print("-----------------------------------------------------------")
-=======
-        print(f"Winner is: Player {Places[0] + 1}!")
->>>>>>> 4332e553252f13c9a149bc27702003bcec37c3a0
         break
     
     rounds += 1
